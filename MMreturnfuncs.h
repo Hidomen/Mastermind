@@ -13,13 +13,13 @@ void guessFormat(char *guessReturnSTR, int guess, int minusReturn, int plusRetur
 
 void addToList(char arr[], char input[], int from, int length){
 
-    // arr[from] = ' ';
-    // arr[from+1] = '|';
-    // arr[from+2] = ' ';
-
-    for(int i = 0; i < length; i++){
-        arr[from+i] = input[i];
+    arr[from] = ' ';
+    
+    for(int i = 0; i < length-3; i++){
+        arr[from+i+1] = input[i];
     }
+    arr[from+length-2] = ' ';
+    arr[from+length-1] = '/';
 }
 
 //prints guess return and formats guess

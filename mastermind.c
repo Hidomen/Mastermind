@@ -22,14 +22,25 @@
 
 //TECHNICAL
 #define NUMBERSIZE 4
-#define RETURN_LENGTH 15
+#define RETURN_LENGTH 17
+#define MAX_LIMIT 19
 
-bool isOver = false;
+#define MAX_RETURN (RETURN_LENGTH*MAX_LIMIT)
+//  1023 -> +0, -2 |
 
 
-char returnList[100];
+bool isExit = false;
+
+
+char returnList[MAX_RETURN];
 char guessStr[RETURN_LENGTH];
+
+
+int guessList[MAX_LIMIT];
+
 //************************************/
+
+int limit[] = {3, 4, 7, 8, 11, 15, MAX_LIMIT};
 
 
 bool roundPlay(int turnLimit){
@@ -40,6 +51,8 @@ bool roundPlay(int turnLimit){
 
     int arrSnumber[NUMBERSIZE];
     int arrGuess[NUMBERSIZE];
+
+    fillIntArr(guessList, 0, MAX_LIMIT);
     
 
     // //for test
@@ -49,8 +62,9 @@ bool roundPlay(int turnLimit){
     
     //TURNS
     for(int turnIndex = 0; turnIndex < turnLimit; turnIndex++){
+        printf("\e[1;1H\e[2J");
 
-        //fixed this part
+        
         if(turnIndex != 0){
             printf("Previous Guesses: ");
                         
@@ -61,14 +75,20 @@ bool roundPlay(int turnLimit){
         printf(cYLW);
         printf("\n Guess #%d > ", turnIndex+1);
         printf(cRST);
-        int guess = takeGuess();
+        int guess = takeGuess(guessList);
+
+        if(guess == Snumber){
+            break;
+        }
         //
 
-        char guessStr[15];
+        guessList[turnIndex] = guess;
+
+
         //RETURN STUFF
+        char guessStr[RETURN_LENGTH];
         printGuessReturn(Snumber, guess, guessStr);
 
-    
         addToList(returnList, guessStr, RETURN_LENGTH*turnIndex, RETURN_LENGTH);
 
         
@@ -83,8 +103,7 @@ int main(){
 
     // printf(cRST "RED\n");
     
-
-    while(!isOver){
+    while(!isExit){
         char name[25];
 
         
@@ -97,7 +116,6 @@ int main(){
         printf("\n");
         
         //GAME
-        int limit[] = {3, 4, 7, 8, 11, 15, 19};
         
         int indexLimitCount = sizeof(limit)/sizeof(limit[0]);
 
@@ -125,6 +143,7 @@ int main(){
             }
         }
     }
+    printf("A");
 
     return 0;
 }

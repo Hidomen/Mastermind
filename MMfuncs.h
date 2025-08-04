@@ -6,7 +6,7 @@
 
 
 #define NUMBERSIZE 4
-#define FORMAT_LENGTH 15 //length of the return string including , 
+// #define FORMAT_LENGTH 15 //length of the return string including , 
 
 
 #ifndef _INC_MMFUNCSS
@@ -115,11 +115,27 @@ int numberGenerator(){
     return number;
 }
 
+bool inList(int number, int list[]){
+    for(int i = 0; i != 0; i++){
+        if(number == list[i]){
+            return true;
+        }
+    }
+    return false;
+}
 
-int takeGuess(){
+void fillIntArr(int arr[], int fillNumber, int size){
+    for(int i = 0; i < size; i++){
+        arr[i] = fillNumber;
+    }
+
+}
+
+
+int takeGuess(int guessList[]){
     int guess;
 
-    while(!isNumberValid(guess) || digitCount(guess) != NUMBERSIZE){
+    while(!isNumberValid(guess) || digitCount(guess) != NUMBERSIZE || inList(guess, guessList)){
         scanf("%d", &guess);
         
         //warning messages
@@ -133,6 +149,12 @@ int takeGuess(){
         //its not repeating
         if(!isNumberValid(guess)){
             printf("Your number mustn't repeating, must be valid number\n");
+            continue;
+        }
+
+        //its already guessed
+        if(inList(guess, guessList)){
+            printf("You already guessed same number\n");
             continue;
         }
 
