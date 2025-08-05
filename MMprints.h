@@ -4,10 +4,18 @@
 
 #include "MMfuncs.h"
 
-
-
-
 #define NUMBERSIZE 4
+#define RETURN_LENGTH 17
+
+//VISUAL
+#define cRED     "\e[0;31m"
+#define cBLU     "\e[0;34m"   
+#define cYLW     "\e[0;33m"
+#define cPRP     "\e[0;35m"
+#define cGRN     "\e[0;32m"
+#define cRST     "\033[0m"
+//
+
 
 #ifndef _INC_MMPRINTS // include guard for 3rd party interop
 #define _INC_MMPRINTS
@@ -30,18 +38,6 @@ void printRules(){
     printf("And you can see how many people tried to find your number and how many attempt taken for each player.\n");
 }
 
-// void numberToArr(int number, int *arr, int numberSize){
-    
-
-//     for(int i = numberSize-1; i > -1; i--){
-//         arr[i] = number % 10;
-//         number /= 10;
-//     }
-    
-// }
-
-
-
 
 void printstr (char* str){
 
@@ -60,5 +56,20 @@ void printstrl (char *str, int size){
         printf("%c", str[i]);
     }
 }
+
+
+void printReturn (char *str, int size){
+    for(int i = 0; i < size; i++){
+        if(i < RETURN_LENGTH){
+            printf(cRED);
+        }
+        if(i > RETURN_LENGTH && i < RETURN_LENGTH*2){
+            printf(cGRN);
+        }
+        printf("%c", str[i]);
+    }
+    printf(cRST);
+}
+
 
 #endif

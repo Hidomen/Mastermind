@@ -116,7 +116,7 @@ int numberGenerator(){
 }
 
 bool inList(int number, int list[]){
-    for(int i = 0; i != 0; i++){
+    for(int i = 0; list[i] != 0; i++){
         if(number == list[i]){
             return true;
         }

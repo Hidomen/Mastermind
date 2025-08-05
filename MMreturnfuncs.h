@@ -3,6 +3,15 @@
 
 #define NUMBERSIZE 4
 
+//VISUAL
+#define cRED     "\e[0;31m"
+#define cBLU     "\e[0;34m"   
+#define cYLW     "\e[0;33m"
+#define cPRP     "\e[0;35m"
+#define cGRN     "\e[0;32m"
+#define cRST     "\033[0m"
+//
+
 void guessFormat(char *guessReturnSTR, int guess, int minusReturn, int plusReturn){
     
     sprintf(guessReturnSTR, "%d -> +%d, -%d", guess, plusReturn, minusReturn);
@@ -14,10 +23,13 @@ void guessFormat(char *guessReturnSTR, int guess, int minusReturn, int plusRetur
 void addToList(char arr[], char input[], int from, int length){
 
     arr[from] = ' ';
+
     
     for(int i = 0; i < length-3; i++){
         arr[from+i+1] = input[i];
     }
+
+
     arr[from+length-2] = ' ';
     arr[from+length-1] = '/';
 }

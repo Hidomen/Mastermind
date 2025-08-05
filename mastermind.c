@@ -36,7 +36,7 @@ char returnList[MAX_RETURN];
 char guessStr[RETURN_LENGTH];
 
 
-int guessList[MAX_LIMIT];
+int guessList[MAX_LIMIT+1];
 
 //************************************/
 
@@ -52,7 +52,7 @@ bool roundPlay(int turnLimit){
     int arrSnumber[NUMBERSIZE];
     int arrGuess[NUMBERSIZE];
 
-    fillIntArr(guessList, 0, MAX_LIMIT);
+    fillIntArr(guessList, 0, MAX_LIMIT+1);
     
 
     // //for test
@@ -68,14 +68,19 @@ bool roundPlay(int turnLimit){
         if(turnIndex != 0){
             printf("Previous Guesses: ");
                         
-            printstrl(returnList, RETURN_LENGTH*turnIndex);
+            printReturn(returnList, RETURN_LENGTH*turnIndex);
+            printf("\n");
         }
+
+        printf("\nRemaining Guesses: %d\n", turnLimit-turnIndex);
 
         //taking guess
         printf(cYLW);
         printf("\n Guess #%d > ", turnIndex+1);
         printf(cRST);
-        int guess = takeGuess(guessList);
+
+
+        guess = takeGuess(guessList);
 
         if(guess == Snumber){
             break;
@@ -83,6 +88,7 @@ bool roundPlay(int turnLimit){
         //
 
         guessList[turnIndex] = guess;
+        
 
 
         //RETURN STUFF

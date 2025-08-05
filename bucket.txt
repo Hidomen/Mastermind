@@ -3,13 +3,13 @@
 * comparisons and results to screen working
 * guess list is done
 * removed magic numbers and prev. respond is fixed
+* clear screen after every guess
+* show remaining guesses
+* check for same guesses and dont let it be done
 ---------------------------------------------
 * aesthetic stuff is missing
 * colors is missing 
 * edit Previous Guesses make it more aesthetic 
-* show remaining guesses
-* clear screen after every guess
-* check for same guesses and dont let it be done
 * who wins the tournament writes their name on the champ list and can add their own number to that list and this list shall saved in a file in order to keep it
 * add a menu which can check champ list, play 2player mode, read rules etc.
 
