@@ -72,4 +72,24 @@ void printReturn (char *str, int size){
 }
 
 
+void printWinScreen(){
+    printf("\n\n\nCONGRATULATIONS!!! YOU WON THE TOURNAMENT.\n\n");
+    printf("Now you can add your ");
+    printf(cYLW);
+    printf("Golden Number");
+    printf(cRST);
+    printf(" to the ");
+    printf(cBLU);
+    printf("Champions List\n\n");
+    printf(cRST);
+
+
+}
+
+
+void printLoseScreen(){
+
+}
+
+
 #endif

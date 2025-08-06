@@ -23,7 +23,7 @@
 //TECHNICAL
 #define NUMBERSIZE 4
 #define RETURN_LENGTH 17
-#define MAX_LIMIT 19
+#define MAX_LIMIT 1
 
 #define MAX_RETURN (RETURN_LENGTH*MAX_LIMIT)
 //  1023 -> +0, -2 |
@@ -42,6 +42,13 @@ int guessList[MAX_LIMIT+1];
 
 int limit[] = {3, 4, 7, 8, 11, 15, MAX_LIMIT};
 
+void test(int Snumber){
+    
+
+    printf(cRED "%d", Snumber);
+    printf(cRST);
+}
+
 
 bool roundPlay(int turnLimit){
 
@@ -53,17 +60,12 @@ bool roundPlay(int turnLimit){
     int arrGuess[NUMBERSIZE];
 
     fillIntArr(guessList, 0, MAX_LIMIT+1);
-    
 
-    // //for test
-    // printf(cRED "%d", Snumber);
-    // printf(cRST);
-    // //
-    
     //TURNS
     for(int turnIndex = 0; turnIndex < turnLimit; turnIndex++){
         printf("\e[1;1H\e[2J");
 
+        test(Snumber);
         
         if(turnIndex != 0){
             printf("Previous Guesses: ");
@@ -86,7 +88,6 @@ bool roundPlay(int turnLimit){
             break;
         }
         //
-
         guessList[turnIndex] = guess;
         
 
@@ -143,9 +144,11 @@ int main(){
 
             if(isWin){
                 //WIN SCREEN
+                printWinScreen();
             }else {
                 //LOSE SCREEN
-                break;
+                printLoseScreen();
+                isExit = true;
             }
         }
     }
