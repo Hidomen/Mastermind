@@ -104,27 +104,20 @@ bool roundPlay(int turnLimit){
 }
 
 
-int main(){
-    srand(time(NULL));
+void game(){
+    char name[25];
+
+    introScreen();
+    scanf("%24[^\n]", name);
+        
+        
+    printstr(name);
+    printf("\n");
+
+
     bool isWin;
 
-    // printf(cRST "RED\n");
-    
-    while(!isExit){
-        char name[25];
-
-        
-        //INTRO
-        introScreen();
-        scanf("%24[^\n]", name);
-        
-        
-        printstr(name);
-        printf("\n");
-        
-        //GAME
-        
-        int indexLimitCount = sizeof(limit)/sizeof(limit[0]);
+    int indexLimitCount = sizeof(limit)/sizeof(limit[0]);
 
 
         for(; indexLimitCount > 0; indexLimitCount--){
@@ -139,20 +132,51 @@ int main(){
             printf("Limit Number : %d\n\n", limitNumber);
             
             isWin = roundPlay(limitNumber);
-
-
-
-            if(isWin){
-                //WIN SCREEN
-                printWinScreen();
-            }else {
-                //LOSE SCREEN
-                printLoseScreen();
-                isExit = true;
-            }
         }
-    }
-    printf("A");
 
+        if(isWin){
+            //WIN SCREEN
+            printWinScreen();
+            int goldenNumber;
+            scanf("%d", &goldenNumber);
+
+        }else {
+            //LOSE SCREEN
+            printLoseScreen();
+            isExit = true;
+        }
+}
+
+int main(){
+    srand(time(NULL));
+
+    // printf(cRST "RED\n");
+    
+    while(!isExit){
+
+        
+        int option;
+
+        printMenuScreen();
+        scanf("%d", &option);
+
+        switch (option){
+        
+        case 1:
+            game();
+            break;
+        
+        case 2:
+            break;
+
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            isExit = true;
+            break;
+        }    
+    }
     return 0;
 }

@@ -92,4 +92,14 @@ void printLoseScreen(){
 }
 
 
+void printMenuScreen(){
+    printf("Welcome to the MasterWorld\n");
+    printf("1. Begin the tournament\n");
+    printf("2. Multiplayer Mode\n");
+    printf("3. See ChampList\n");
+    printf("4. Challenge a Champ\n");
+    printf("5. Exit\n");
+
+}
+
 #endif
