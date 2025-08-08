@@ -8,6 +8,7 @@
 #include "MMprints.h"
 #include "MMfuncs.h"
 #include "MMreturnfuncs.h"
+#include "MMtwoPmode.h"
 
 
 //VISUAL
@@ -147,6 +148,16 @@ void game(){
         }
 }
 
+
+void seeClist(){
+
+}
+
+
+void cGame(){
+    
+}
+
 int main(){
     srand(time(NULL));
 
@@ -163,17 +174,25 @@ int main(){
         switch (option){
         
         case 1:
+        //tournament
             game();
             break;
         
         case 2:
+        //multiplayer
+            twoPgame();
             break;
 
         case 3:
+        //champ list
+            seeClist();
             break;
         case 4:
+        //challenge mode
+            cGame();
             break;
         case 5:
+        //exit
             isExit = true;
             break;
         }    

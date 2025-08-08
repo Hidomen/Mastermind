@@ -12,6 +12,10 @@
 #define cRST     "\033[0m"
 //
 
+
+#ifndef _INC_MMRETURNF // include guard for 3rd party interop
+#define _INC_MMRETURNF
+
 void guessFormat(char *guessReturnSTR, int guess, int minusReturn, int plusReturn){
     
     sprintf(guessReturnSTR, "%d -> +%d, -%d", guess, plusReturn, minusReturn);
@@ -55,3 +59,5 @@ void printGuessReturn(int Snumber, int guess, char guessStr[]){
     guessFormat(guessStr, guess, minusReturn, plusReturn);
 
 }
+
+#endif
