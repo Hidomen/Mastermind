@@ -64,7 +64,7 @@ bool roundPlay(int turnLimit){
 
     //TURNS
     for(int turnIndex = 0; turnIndex < turnLimit; turnIndex++){
-        printf("\e[1;1H\e[2J");
+        // printf("\e[1;1H\e[2J");
 
         test(Snumber);
         
@@ -109,7 +109,8 @@ void game(){
     char name[25];
 
     introScreen();
-    scanf("%24[^\n]", name);
+    scanf("%24[^\n]", &name);
+    //why this part doesnt work
         
         
     printstr(name);
@@ -121,8 +122,8 @@ void game(){
     int indexLimitCount = sizeof(limit)/sizeof(limit[0]);
 
 
-        for(; indexLimitCount > 0; indexLimitCount--){
-            int roundNumber = -1*indexLimitCount + sizeof(limit)/sizeof(limit[0]) + 1;
+    for(; indexLimitCount > 0; indexLimitCount--){
+        int roundNumber = -1*indexLimitCount + sizeof(limit)/sizeof(limit[0]) + 1;
 
 
             printf("Round: %d\n", roundNumber);
@@ -133,19 +134,20 @@ void game(){
             printf("Limit Number : %d\n\n", limitNumber);
             
             isWin = roundPlay(limitNumber);
-        }
+    }
 
-        if(isWin){
-            //WIN SCREEN
-            printWinScreen();
-            int goldenNumber;
-            scanf("%d", &goldenNumber);
+    if(isWin){
+        //WIN SCREEN
+        printWinScreen();
+        int goldenNumber;
+        scanf("%d", &goldenNumber);
+        addClist(name, goldenNumber);
 
-        }else {
-            //LOSE SCREEN
-            printLoseScreen();
-            isExit = true;
-        }
+    }else {
+        //LOSE SCREEN
+        printLoseScreen();
+        isExit = true;
+    }
 }
 
 
@@ -173,28 +175,28 @@ int main(){
 
         switch (option){
         
-        case 1:
-        //tournament
-            game();
-            break;
+            case 1:
+            //tournament
+                game();
+                break;
         
-        case 2:
-        //multiplayer
-            twoPgame();
-            break;
+            case 2:
+            //multiplayer
+                twoPgame();
+                break;
 
-        case 3:
-        //champ list
-            seeClist();
-            break;
-        case 4:
-        //challenge mode
-            cGame();
-            break;
-        case 5:
-        //exit
-            isExit = true;
-            break;
+            case 3:
+            //champ list
+                seeClist();
+                break;
+            case 4:
+            //challenge mode
+                cGame();
+                break;
+            case 5:
+            //exit
+                isExit = true;
+                break;
         }    
     }
     return 0;

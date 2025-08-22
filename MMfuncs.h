@@ -164,5 +164,19 @@ int takeGuess(int guessList[]){
     return guess;
 }
 
+void addClist(char Name[], int goldenNumber){
+    FILE *fptr;
+
+// Open a file in append mode
+    fptr = fopen("champList.txt", "a");
+
+// Append some text to the file
+    fprintf(fptr, "\n%s -- %d", Name, goldenNumber);
+
+// Close the file
+    fclose(fptr);
+}
+
+
 #endif
 
